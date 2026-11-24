@@ -1,0 +1,4 @@
+@extends('layouts.app')
+@section('title','Device') @section('heading','Device Detail')
+@section('content')<div class="card"><h3>{{ $device['_id'] }}</h3><p class="muted">Data dari GenieACS NBI</p><pre style="white-space:pre-wrap;overflow:auto">{{ json_encode($device, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES) }}</pre></div>
+<div class="card" style="margin-top:16px"><h3>Quick tasks</h3><div style="display:flex;gap:8px;flex-wrap:wrap">@foreach(['refreshObject'=>'Refresh','reboot'=>'Reboot','factoryReset'=>'Factory reset'] as $key=>$label)<form method="post" action="{{ route('devices.task',['deviceId'=>$device['_id']]) }}">@csrf<input type="hidden" name="name" value="{{ $key }}"><button class="btn secondary" onclick="return confirm('Kirim task {{ $label }}?')">{{ $label }}</button></form>@endforeach</div></div>@endsection
