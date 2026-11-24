@@ -2,7 +2,7 @@
 
 Laravel-native web application for migrating Pesona ACS Panel.
 
-> Migration status: foundation scaffold. The source repository currently contains a Docker disaster-recovery bundle, not the original API/frontend source. Full feature parity cannot be certified until original source code or a complete feature inventory is made available.
+> Migration status: foundation scaffold only. The source repository currently contains a Docker disaster-recovery bundle, not the original API/frontend source. Full feature parity cannot be certified until original source code or a complete feature inventory is made available.
 
 ## Requirements
 - PHP 8.2+
@@ -15,8 +15,9 @@ Laravel-native web application for migrating Pesona ACS Panel.
 composer install
 cp .env.example .env
 php artisan key:generate
-php artisan migrate --seed
+php artisan migrate
+php artisan db:seed
 php artisan serve
 ```
 
-Configure GenieACS NBI in .env. See docs/MIGRATION-MATRIX.md and docs/LEGACY-INVENTORY.md.
+Create the first administrator securely using a private console/Tinker operation after install; no default credentials are shipped. Configure GenieACS NBI in .env. See docs/MIGRATION-MATRIX.md and docs/LEGACY-INVENTORY.md.
