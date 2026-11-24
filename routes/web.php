@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
 use App\Http\Controllers\GenieAcsConnectionController;
-Route::get('/', fn () => redirect()->route('dashboard'));
+Route::get('/', fn () => redirect()->route('login'));
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class,'create'])->name('login');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class,'store'])->name('login.store');
 Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class,'destroy'])->middleware('auth')->name('logout');
